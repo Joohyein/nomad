@@ -12,13 +12,16 @@ function Home() {
   }
   // async, await를 사용하기 위해 getMovies라는 함수 생성
 
-  useEffect(()=>getMovies(),[]);
+  useEffect(()=>{
+    getMovies();
+  },[]);
+  
   return (
     <div>
       {loading ? <h1>Loading...</h1> : 
         (
           <div>
-            {movies.map((movie)=><Movie key={movie.id} id={movie.id} coverImg={movie.medium_cover_image} title={movie.title} genres={movie.genres} />)}
+            {movies.map((movie)=><Movie key={movie.id} id={movie.id} summary={movie.summary} coverImg={movie.medium_cover_image} title={movie.title} genres={movie.genres} />)}
           </div>
         )
       }
