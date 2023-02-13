@@ -17,11 +17,12 @@ function App() {
   // coins를 얻었다면 loading을 false로 변경
   return (
     <div>
-      <h1>The Coins ({coins.length})</h1>
-      {loading ? <strong>Loading...</strong> : null}
-      <ul>
-        {coins.map((coin)=><li>{coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD</li>)}
-      </ul>
+      <h1>The Coins {loading ? "" : `(${coins.length})`}</h1>
+      {loading ? <strong>Loading...</strong> 
+      : <select>
+        {coins.map((coin)=><option>{coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD</option>)}
+      </select>}
+      
     </div>
   );
 }
