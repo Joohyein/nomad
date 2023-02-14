@@ -1,25 +1,50 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 function App() {
   return (
-   <Father>
-    <Circle bgColor="green"></Circle>
-    <Box bgColor="yellowgreen"></Box>
-   </Father>
+   <Wrapper>
+      <Box>
+        <span>😁</span>
+      </Box>
+   </Wrapper>
   );
 }
 
 export default App;
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
+
+const rotateAnimation = keyframes`
+  0% {
+    transform:ratate(0deg);
+    border-radius: 0px;
+  }
+  50% {
+    border-radius: 100px;
+  }
+  100% {
+    transform:rotate(360deg);
+    border-radius: 0px;
+  }
+`;
+
 const Box = styled.div`
-  background-color: ${(props) => props.bgColor};
+  height: 100px;
   width:100px;
-  height:100px;
-`
-const Circle = styled(Box)`
-  border-radius: 50px;
-`
-// Box의 모든 속을 가져오고 거기에 Circle을 추가
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  animation: ${rotateAnimation} 3s linear infinite;
+  span {
+    font-size: 36px;
+    &:hover {
+      font-size: 40px;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
+`;
