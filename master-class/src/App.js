@@ -4,16 +4,21 @@ function App() {
   return (
    <Wrapper>
       <Box>
-        <span>😁</span>
+        <Emoji as="span">😁</Emoji>
       </Box>
+      <Emoji>😁</Emoji>
    </Wrapper>
   );
 }
-
 export default App;
 
+// styled components ------------------------------
 const Wrapper = styled.div`
   display: flex;
+  height:100vh;
+  width:100vw;
+  justify-content: center;
+  align-items: center;
 `;
 
 const rotateAnimation = keyframes`
@@ -38,13 +43,19 @@ const Box = styled.div`
   align-items: center;
   background-color: green;
   animation: ${rotateAnimation} 3s linear infinite;
-  span {
-    font-size: 36px;
-    &:hover {
-      font-size: 40px;
-    }
-    &:active {
+  ${Emoji} {
+    :hover {
+    font-size: 98px;
+    :active {
       opacity: 0;
     }
   }
+    
+  }
 `;
+// Box 컴포넌트 안에 Emoji 컴포넌트를 직접적으로 타겟팅 할 수 있다.
+// Box 밖에 있는 Emoji 컴포넌트에는 적용되지 않는다.
+
+const Emoji = styled.span`
+  font-size:36px;
+`
