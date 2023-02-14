@@ -3,10 +3,8 @@ import styled from "styled-components";
 function App() {
   return (
    <Father>
-    <BoxOne>
-      <Text>Hyein zzang</Text>
-    </BoxOne>
-    <BoxTwo></BoxTwo>
+    <Circle bgColor="green"></Circle>
+    <Box bgColor="yellowgreen"></Box>
    </Father>
   );
 }
@@ -16,16 +14,12 @@ export default App;
 const Father = styled.div`
   display: flex;
 `;
-const BoxOne = styled.div`
-  background-color: green;
+const Box = styled.div`
+  background-color: ${(props) => props.bgColor};
   width:100px;
   height:100px;
 `
-const BoxTwo = styled.div`
-  background-color: pink;
-  width:100px;
-  height:100px;
+const Circle = styled(Box)`
+  border-radius: 50px;
 `
-const Text = styled.span`
-  color: white;
-`
+// Box의 모든 속을 가져오고 거기에 Circle을 추가
